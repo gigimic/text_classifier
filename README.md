@@ -1,13 +1,14 @@
 SMS Spam Collection
 -------------------------
 
-1. DESCRIPTION
---------------
+1.. Description
+----------------
 
-The SMS Spam Collection (the corpus) is a set of SMS tagged messages that have been collected for SMS Spam research. It contains one set of SMS messages in English of 5,574 messages, tagged acording being ham (legitimate) or spam. 
+The SMS Spam Collection (the corpus) is a set of SMS tagged messages that have been collected for SMS Spam research. It contains one set of SMS messages in English of 5,574 messages, tagged acording being ham (legitimate) or spam.
 
 1.1. Compilation
 ----------------
+
 
 This corpus has been collected from free or free for research sources at the Web:
 
@@ -43,7 +44,7 @@ spam   URGENT! Your Mobile No 07808726822 was awarded a L2,000 Bonus Caller Priz
 Note: messages are not chronologically sorted.
 
 
-2. USAGE
+2.. USAGE
 --------
 
 A comprehensive study of this corpus is in the following paper. This work presents a number of statistics, studies and baseline results for several machine learning methods.
