@@ -44,9 +44,50 @@ spam   URGENT! Your Mobile No 07808726822 was awarded a L2,000 Bonus Caller Priz
 Note: messages are not chronologically sorted.
 
 
-2.. USAGE
+1.4.. USAGE
 --------
 
 A comprehensive study of this corpus is in the following paper. This work presents a number of statistics, studies and baseline results for several machine learning methods.
 
 Almeida, T.A., G�mez Hidalgo, J.M., Yamakami, A. Contributions to the study of SMS Spam Filtering: New Collection and Results. Proceedings of the 2011 ACM Symposium on Document Engineering (ACM DOCENG'11), Mountain View, CA, USA, 2011.
+
+
+2.. Implementing BOW in scikit-learn
+----------------
+
+CountVectorizer() has certain parameters which take care of the following steps.
+
+lowercase = True
+
+The lowercase parameter has a default value of True which converts all of our text to its lower case form.
+
+token_pattern = (?u)\\b\\w\\w+\\b
+
+The token_pattern parameter has a default regular expression value of (?u)\\b\\w\\w+\\b which ignores all punctuation marks and treats them as delimiters, while accepting alphanumeric strings of length greater than or equal to 2, as individual tokens or words.
+
+stop_words
+
+The stop_words parameter, if set to english will remove all words from our document set that match a list of English stop words which is defined in scikit-learn. Considering the size of our dataset and the fact that we are dealing with SMS messages and not larger text sources like e-mail, we will not be setting this parameter value.
+
+Now split the dataset into a training and testing set by using the train_test_split method in sklearn. Split the data using the following variables:
+
+X_train is our training data for the 'messages' column.
+y_train is our training data for the 'label' column
+X_test is our testing data for the 'messages' column.
+y_test is our testing data for the 'label' column Print out the number of rows we have in each our training and testing data.
+
+After splitting the data, the next objective is to  convert our data into the desired matrix format. To do this we will be using CountVectorizer(). There are two steps to consider here:
+
+Firstly, we have to fit our training data (X_train) into CountVectorizer() and return the matrix.
+Secondly, we have to transform our testing data (X_test) to return the matrix.
+Note that X_train is our training data for the 'messages' column in our dataset and we will be using this to train our model.
+
+X_test is our testing data for the 'messages' column and this is the data we will be using(after transformation to a matrix) to make predictions on. We will then compare those predictions with y_test in a later step.
+
+
+3.. Implementing Naive Bayes using scikit-learn
+----------------
+
+sklearn has several Naive Bayes implementations that we can use and so we do not have to do the math from scratch. We will be using sklearns sklearn.naive_bayes method to make predictions on our dataset.
+
+Specifically, we will be using the multinomial Naive Bayes implementation. This particular classifier is suitable for classification with discrete features (such as in our case, word counts for text classification). It takes in integer word counts as its input. On the other hand Gaussian Naive Bayes is better suited for continuous data as it assumes that the input data has a Gaussian(normal) distribution.
