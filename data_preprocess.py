@@ -35,15 +35,21 @@ X = sms_data['message']
 y = sms_data['label']
 
 # X_train, X_test, y_train, t_test = train_test_split(X, y, test_size = 0.3, random_state = 1)
-X_train, X_test, y_train, t_test = train_test_split(sms_data['message'], sms_data['label'], test_size = 0.3, random_state = 1)
+X_train, X_test, y_train, y_test = train_test_split(sms_data['message'], sms_data['label'], test_size = 0.3, random_state = 1)
 
 print('Total number of rows: {}'.format(sms_data.shape[0]))
 print('Number of rows in the training set: {}'.format(X_train.shape[0]))
 print('Number of rows in the test set: {}'.format(X_test.shape[0]))
 
-training_data = count_vector.fit(X_train)
-test_data = count_vector.fit(X_test)
-print('shape of training data: ', len(training_data))
+# we are learning a vocabulary dictionary for the training data 
+# and then transforming the data into a document-term matrix
+
+training_data = count_vector.fit_transform(X_train)
+
+# for the testing data we are only 
+# transforming the data into a document-term matrix
+test_data = count_vector.transform(X_test)
+
 naive_bayes = MultinomialNB()
 naive_bayes.fit(training_data, y_train)
 
